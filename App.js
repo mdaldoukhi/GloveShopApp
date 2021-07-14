@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { ThemeProvider } from "styled-components";
-import VendorDetail from './components/vendor/VendorDetail';
-import VendorList from './components/vendor/VendorList';
-import { Title } from './styles';
+import { NativeBaseProvider } from 'native-base';
+
+import { NavigationContainer } from '@react-navigation/native';
+import RootNavigator from "./components/Navigation/index"
 
 
 const theme = {
@@ -17,11 +18,14 @@ const theme = {
 }
 export default function App() {
   return (
-    <View>
-      <ThemeProvider theme={theme["light"]}>
-      <VendorDetail />
-      </ThemeProvider>
-    </View>
+      <NativeBaseProvider>
+        <ThemeProvider theme={theme["light"]}>
+          <NavigationContainer>
+            <RootNavigator />
+          </NavigationContainer>
+        </ThemeProvider>
+      </NativeBaseProvider>
+
   );
 }
 

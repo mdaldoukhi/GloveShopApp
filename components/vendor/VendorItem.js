@@ -2,20 +2,23 @@ import React from 'react';
 import { Title } from '../../styles';
 import { Image, Text } from "react-native";
 import { ListWrapper } from './styles';
+import { List } from "native-base"
 
 
 
-function VindorItem(props) {
+
+function VindorItem({ shop, navigation }) {
     return (
-        <ListWrapper>
+        <List.Item onPress={() => navigation.navigate('VendorDetail', { shop: shop })}>
             <Image
-                source={{ uri: props.shop.image }}
+                source={{ uri: shop.image }}
                 style={{ width: 100, height: 100 }}
+
             />
             <Text>
-                {props.shop.name}
+                {shop.name}
             </Text>
-        </ListWrapper>
+        </List.Item>
     );
 }
 

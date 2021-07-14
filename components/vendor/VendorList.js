@@ -4,14 +4,15 @@ import vindorStore from "../../stores/vendorStore"
 import VindorItem from "./VendorItem"
 import { Title } from '../../styles';
 import { observer } from "mobx-react";
+import { List } from "native-base"
 
 
-function VendorList() {
-    const vindorList = vindorStore.vendors.map(shop => <VindorItem shop={shop} key={shop.id} />)
+function VendorList({ navigation }) {
+    const vindorList = vindorStore.vendors.map(shop => <VindorItem shop={shop} key={shop.id} navigation={navigation} />)
     return (
-        <View>
+        <List>
             {vindorStore.loading ? <Title>Loading</Title> : vindorList}
-        </View>
+        </List>
     );
 }
 

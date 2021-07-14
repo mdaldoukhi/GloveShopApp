@@ -6,19 +6,17 @@ import { Text } from 'react-native';
 import ItemList from '../item/ItemList';
 import { observer } from "mobx-react";
 
-
-
-function VendorDetail() {
+function VendorDetail({ navigation, route }) {
     if (vendorStore.loading) return <Text>Loading</Text>;
-    const vendor = vendorStore.vendors[0]
-    const items = vendor.gloves.map(item => itemStore.getProductById(item.id))
+    const { shop } = route.params
+    const items = shop.gloves.map(item => itemStore.getProductById(item.id))
     return (
         <>
             <ListWrapper>
-                <VendorImage source={{ uri: vendor.image }} />
-                <VendorTitle>{vendor.name}</VendorTitle>
+                <VendorImage source={{ uri: shop.image }} />
+                <VendorTitle>{shop.name}</VendorTitle>
             </ListWrapper>
-            <ItemList items={items}/>
+            <ItemList items={items} />
         </>
     );
 }

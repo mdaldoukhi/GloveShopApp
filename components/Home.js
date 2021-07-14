@@ -1,15 +1,15 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { Title } from '../styles';
+import { Button } from 'native-base';
 
-
-
-const Home = () => {
+const Home = ({ navigation }) => {
     return (
-        <View>
-            <Title>Hello from Home Page</Title>
-        </View>
+        <Button style={{ marginTop: "30%" }} onPress={() => navigation.navigate('VendorList')}>
+            Click Here
+        </Button>
     );
 };
+
 
 export default Home;
