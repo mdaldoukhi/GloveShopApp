@@ -1,15 +1,26 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import { Title } from '../styles';
-import { Button } from 'native-base';
-
+import React from "react";
+import { View, ImageBackground, StyleSheet } from "react-native";
+import { Button, Stack, Text } from "native-base";
+import { AppTitle, HomeBackground, Title } from "../styles";
 const Home = ({ navigation }) => {
-    return (
-        <Button style={{ marginTop: "30%" }} onPress={() => navigation.navigate('VendorList')}>
-            Click Here
+  return (
+    <>
+      <HomeBackground source={require("./bkimage.png")}>
+      <AppTitle>GoalKeeper Equioment</AppTitle>
+        <Button
+          style={{ marginTop: "100%", width: "80%" }}
+          mx={{
+            base: "auto",
+            md: 0,
+          }}
+          variant="outline"
+          onPress={() => navigation.navigate("VendorList")}
+        >
+          Go to the Shop
         </Button>
-    );
+      </HomeBackground>
+    </>
+  );
 };
-
 
 export default Home;
