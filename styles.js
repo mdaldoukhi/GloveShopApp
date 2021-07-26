@@ -10,7 +10,6 @@ export const Title = styled.Text`
 export const AppTitle = styled.Text `
     font-size: 25px;
     text-align: center;
-    font-family: serif;
     font-weight: bold;
     margin: 15%;
 `;

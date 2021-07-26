@@ -6,7 +6,7 @@ const Home = ({ navigation }) => {
   return (
     <>
       <HomeBackground source={require("./bkimage.png")}>
-      <AppTitle>GoalKeeper Equioment</AppTitle>
+      <AppTitle>GoalKeeper Equipment</AppTitle>
         <Button
           style={{ marginTop: "100%", width: "80%" }}
           mx={{
