@@ -10,8 +10,9 @@ import cartStore from "../../stores/cartStore"
 
 const CartItem = ({ item }) => {
     const [quantity, setQuantity] = useState(item.quantity);
-    const handleChange = () => {
-        setQuantity(quantity+1)
+    const handleChange = (value) => {
+        setQuantity(value)
+        cartStore.updateQuantity(item.id, value)
     }
     return (
         <List.Item>
@@ -29,7 +30,8 @@ const CartItem = ({ item }) => {
                 totalWidth={80}
                 totalHeight={40}
                 initValue={quantity}
-                onChange={handleChange}           
+                value={quantity}
+                onChange={handleChange}
             />
         </List.Item>
     );

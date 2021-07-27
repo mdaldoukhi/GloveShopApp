@@ -43,9 +43,11 @@ class CartStore {
         this.items.forEach((item) => (total += item.quantity));
         return total;
     }
-    // updateQuantity = () => {
-
-    // }
+    updateQuantity = (itemId, value) => {
+        this.items = this.items.map((item) =>
+        item.gloveId === itemId ? { ...item, quantity: value} : item
+        );
+    }
 
 }
 
