@@ -31,11 +31,16 @@ class CartStore {
         await AsyncStorage.removeItem("cart");
         alert("Payment")
     }
+
     get totalQuantity() {
         let total = 0;
         this.items.forEach((item) => (total += item.quantity));
         return total;
     }
+    // updateQuantity = () => {
+        
+    // }
+
 }
 
 const cartStore = new CartStore();

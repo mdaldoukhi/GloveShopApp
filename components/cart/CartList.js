@@ -12,8 +12,14 @@ import CartItem from "./CartItem";
 
 //observer
 import { observer } from "mobx-react";
+import { Button } from "react-native";
+import authStore from "../../stores/authStore";
 
-const CartList = () => {
+const CartList = ({ navigation }) => {
+    const handleSignOut = () => {
+        authStore.signout()
+        if (authStore.user === null) navigation.replace("Home")
+    }
     if (itemStore.loading) return <Spinner />;
     const cartList = cartStore.items
         .map((item) => ({
@@ -24,7 +30,10 @@ const CartList = () => {
     return (
         <List>
             {cartList}
-            <CheckoutButton onPress={cartStore.checkout}><CheckoutButtonText>Checkout</CheckoutButtonText></CheckoutButton>
+            <CheckoutButton onPress={cartStore.checkout}>
+                <CheckoutButtonText>Checkout</CheckoutButtonText>
+            </CheckoutButton>
+            <Button title="Signout" onPress={handleSignOut} />
         </List>
     );
 };

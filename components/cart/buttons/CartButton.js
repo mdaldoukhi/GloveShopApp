@@ -13,10 +13,30 @@ import { Button } from "native-base";
 
 //observer
 import { observer } from "mobx-react";
+import authStore from "../../../stores/authStore";
+import { Alert } from "react-native";
+
 const CartButton = () => {
+    const handlePress = () => {
+        if (authStore.user) navigation.navigate("CartList")
+        else {
+            Alert.alert(
+                "Sign in",
+                "Sign in to access checkout",
+                [
+                    {
+                        text: "Cancel",
+                        onPress: () => console.log("Cancel Pressed"),
+                        style: "cancel"
+                    },
+                    { text: "Signin", onPress: () => navigation.navigate("Signin") }
+                ]
+            );
+        }
+    }
     const navigation = useNavigation();
     return (
-        <Button onPress={() => navigation.navigate("CartList")}>
+        <Button onPress={handlePress}>
             <CartButtonStyled name="shopping-cart" size={24} />
             <CartTextStyled>{cartStore.totalQuantity}</CartTextStyled>
         </Button>
