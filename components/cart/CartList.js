@@ -16,8 +16,8 @@ import { Button } from "react-native";
 import authStore from "../../stores/authStore";
 
 const CartList = ({ navigation }) => {
-    const handleSignOut = () => {
-        authStore.signout()
+    const handleSignOut = async () => {
+        await authStore.signout()
         if (authStore.user === null) navigation.replace("Home")
     }
     if (itemStore.loading) return <Spinner />;
